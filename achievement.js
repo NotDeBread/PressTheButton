@@ -70,7 +70,6 @@ setInterval(() => {
         save.achClicks = true
         achDisplay('Click','Click the button.','click')
     }
-
     if(save.clicks >= 10 && save.achTwoDig === false && achActive === false) {
         save.achTwoDig = true
         save.clickMultiplierMultiplier *= 2
@@ -102,7 +101,6 @@ setInterval(() => {
         save.clickMultiplierMultiplier *= 2
         achDisplay('1 MILLION','Reach 1 Million score.','sevenDig',`+ x2 multiplier (x${formatNumber(save.clickMultiplierMultiplier)})`)
     }
-
     if(save.hundredPowerReached === true && save.achPowah === false && achActive === false) {
         save.achPowah = true
         achDisplay('POWAHH!!!','Reach 100 POWER.','powah')

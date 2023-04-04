@@ -32,6 +32,10 @@ const save = JSON.parse(localStorage.getItem("save")) ?? {
     infinityReached: false,
 }
 
+if(clicks = NaN) {
+    deletesave()
+}
+
 // Autosaving
 
 setInterval(autosave, 60000);
