@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Press The Button</title>
+</head>
+
+<body>
+
+
+    <div class="dialogue-container">
+        <div id="dialogue">
+            <img src="media/portraits/debread/normal.gif" id="dialogueImg">
+            <div class="dialogueTxt-container">
+                <span id="dialogueName">Character Name</span>
+                <span id="dialogueText">Character Text</span>
+                <div class="space-container">
+                    <img src="media/space.gif" id="space">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="achievement-container">
+        <div id="achievement">
+            <img id="achImg" src="media/achievements/click.png">
+            <div class="achievement-content">
+                <span id="achName">Achievement Name</span>
+                <em id="achDesc">Achievement Description</em>
+            </div>
+        </div>
+        <div id="achBelow">
+            <span id="achBelowTXT">+PERMENENT X2 MULTIPLIER</span>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <img
+            src="media/button0.png"
+            class="button"
+            id="button"
+            onclick="buttonClick()"
+            onmousedown="button.src='media/button1.png'"
+            onmouseup="button.src='media/button0.png'">
+        <img src="media/shine.png" class="button-shine" id="buttonShine">
+        <span id="clicks">0</span>
+    </div>
+
+    <span id="powerBarTXT">POWER: 0</span>
+
+    <div style="position: absolute; display: flex; justify-content: center; bottom: 15px; width: 100vw;">
+        <span id="powerBarEquation">1x1</span>
+    </div>
+
+    <span id="powerBarMultiplier">x10</span>
+
+    <div class="powerBar-container">
+        <div id="powerBar"></div>
+    </div>
+
+    <script src="save.js"></script>
+    <script src="settings.js"></script>
+    <script src="script.js"></script>
+    <script src="achievement.js"></script>
+    <script src="dialog.js"></script>
+</body>
+
+</html>

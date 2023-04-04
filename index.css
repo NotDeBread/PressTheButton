@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  margin: 0;
+  background-color: rgb(25, 25, 25);
+  color: white;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+.dialogue-container {
+  position: absolute;
+  top: 10px;
+  width: 100vw;
+  height: 125px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.achievement-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100vw - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+}
+
+#dialogue {
+  width: 750px;
+  height: 0px;
+  background: black;
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  overflow: hidden;
+  transition: height ease-in-out 0.25s, padding ease-in-out 0.25s;
+}
+
+#dialogueImg {
+  width: 125px;
+}
+
+#dialogueName {
+  font-size: 1.25em;
+  font-weight: 900;
+}
+
+.dialogueTxt-container {
+  display: flex;
+  margin-left: 25px;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  flex-direction: column;
+}
+
+.space-container {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 100%;
+  width: calc(100% - 25px);
+}
+
+#space {
+  height: 25px;
+  transition: opacity ease-in-out 0.25s;
+}
+
+#achievement {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px;
+  background-color: rgb(15, 15, 15);
+  transform: scale(150%);
+  opacity: 0;
+  transition: transform cubic-bezier(1,0,1,1) 0.25s, opacity ease-in-out 0.5s;
+}
+
+
+.achievement-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#achImg {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+}
+
+#achName {
+  font-weight: 700;
+  font-size: 1.25em;
+  height: 22px;
+}
+
+#achBelow {
+  z-index: -1;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding: 0 10px;
+  opacity: 0;
+  background-color: rgb(10, 10, 10);
+  bottom: 30px;
+  transition: bottom ease-in-out 0.25s;
+}
+
+.button-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  height: 100vh;
+  width: 100vw;
+}
+
+.button {
+  width: 20vw;
+}
+
+.button-shine {
+  position: absolute;
+  width: 25vw;
+  z-index: -1;
+  opacity: 0;
+}
+
+#clicks {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+#powerBarTXT {
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+}
+
+#powerBarMultiplier {
+  position: absolute;
+  bottom: 15px;
+  right: 5px;
+  font-weight: 450;
+  font-size: 2em;
+}
+
+.powerBar-container {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 10px;
+  background-color: rgb(20, 20, 20);
+}
+
+#powerBar {
+  height: 10px;
+  width: 0;
+  background-color: white;
+  transition: width linear 150ms;
+}
+
+@keyframes rainbow {
+  0% {
+    background: linear-gradient(0.25turn, #ff5e5e, #ff9f5e, #ffe45e, #a4ff5e, #5eafff, #a15eff);
+  }
+  16.6% {
+    background: linear-gradient(0.25turn, #a15eff, #ff5e5e, #ff9f5e, #ffe45e, #a4ff5e, #5eafff);
+  }
+  33.3% {
+    background: linear-gradient(0.25turn, #5eafff, #a15eff, #ff5e5e, #ff9f5e, #ffe45e, #a4ff5e);
+  }
+  50% {
+    background: linear-gradient(0.25turn, #a4ff5e, #5eafff, #a15eff, #ff5e5e, #ff9f5e, #ffe45e);
+  }
+  66.6% {
+    background: linear-gradient(0.25turn, #ffe45e, #a4ff5e, #5eafff, #a15eff, #ff5e5e, #ff9f5e);
+  }
+  83.2% {
+    background: linear-gradient(0.25turn, #ff9f5e, #ffe45e, #a4ff5e, #5eafff, #a15eff, #ff5e5e);
+  }
+  100% {
+    background: linear-gradient(0.25turn, #ff5e5e, #ff9f5e, #ffe45e, #a4ff5e, #5eafff, #a15eff);
+  }
+}
