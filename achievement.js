@@ -66,14 +66,22 @@ function achDisplay(name, desc, img, below) {
 }
 
 setInterval(() => {
-    if(save.clicks >= 1 && save.achClicks === false && achActive === false) {
+    if(save.clicksRaw >= 1 && save.achClicks === false && achActive === false) {
         save.achClicks = true
-        achDisplay('Click','Click the button.','click')
+        achDisplay('Click','Click the button.','click', `+1 Clicks per second`)
+    }
+    if(save.clicksRaw >= 1000 && save.achGoldenClicks === false && achActive === false) {
+        save.achGoldenClicks = true
+        achDisplay('Golden Clicks','Click the button 1,000 times.','goldenClicks')
+    }
+    if(save.clicksRaw >= 5000 && save.achPlatinumClicks === false && achActive === false) {
+        save.achPlatinumClicks = true
+        save.cps *= 2
+        achDisplay('Platinum Clicks','Click the button 5,000 times.','platinumClicks')
     }
     if(save.clicks >= 10 && save.achTwoDig === false && achActive === false) {
         save.achTwoDig = true
         save.clickMultiplierMultiplier *= 2
-        console.log('ih')
         achDisplay('Two Digits','Reach 10 score.','twoDig',`+ x2 multiplier (x${formatNumber(save.clickMultiplierMultiplier)})`)
     }
     if(save.clicks >= 100 && save.achThreeDig === false && achActive === false) {

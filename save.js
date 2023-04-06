@@ -1,4 +1,5 @@
-const save = JSON.parse(localStorage.getItem("save")) ?? {
+const save = JSON.parse(localStorage.getItem("PTBSave")) ?? {
+    clicksRaw: 0,
     clicks: 0,
     clickMultiplier: 1,
     clickMultiplierMultiplier: 1,
@@ -8,9 +9,14 @@ const save = JSON.parse(localStorage.getItem("save")) ?? {
     hundredPowerReached: false,
 
     achClicks: false,
-    achOnlyClicking: false,
+    achGoldenClicks: false,
+    achPlatinumClicks: false,
+
     achPowah: false,
+
+    achOnlyClicking: false,
     achDedication: false,
+
     achTwoDig: false,
     achThreeDig: false,
     achFourDig: false,
@@ -32,7 +38,7 @@ const save = JSON.parse(localStorage.getItem("save")) ?? {
     infinityReached: false,
 }
 
-if(clicks = NaN) {
+if(save.clicks === NaN) {
     deletesave()
 }
 
@@ -41,11 +47,11 @@ if(clicks = NaN) {
 setInterval(autosave, 60000);
 
 function autosave() {
-    localStorage.setItem("save", JSON.stringify(save));
+    localStorage.setItem("PTBSave", JSON.stringify(save));
     console.log(`Autosaved ${formatNumber(save.clicks)} Points!`);
 }
 
 function deletesave() {
-    localStorage.removeItem("save", JSON.stringify(save));
+    localStorage.removeItem("PTBSave", JSON.stringify(save));
     window.location.reload();
 }

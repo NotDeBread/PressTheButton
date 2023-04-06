@@ -57,7 +57,10 @@ function formatNumber(number) {
 
 clicksDisplay.innerText = formatNumber(save.clicks)
 
-function buttonClick() {
+function buttonClick() { 
+    save.clicksRaw++
+    document.getElementById('clicksRaw').innerText = formatNumber(save.clicksRaw)
+
     save.clicks += save.clickMultiplier * save.clickMultiplierMultiplier
 
     if(powerClicks < 99) {
@@ -68,12 +71,12 @@ function buttonClick() {
         save.hundredPowerReached = true
     }
 
-    if(save.clicks >= decillion && save.decillionPassed === false && dialogueActive === false) {
+    if(save.clicks >= decillion && !save.decillionPassed && !dialogueActive) {
         save.decillionPassed = true
         dialogueDisplay('DeBread',dialogue1D,'#ffb759')
     }
     
-    if(save.clicks >= Infinity && save.infinityReached === false && dialogueActive === false) {
+    if(save.clicks >= Infinity && !save.infinityReached && !dialogueActive) {
         save.infinityReached = true
         dialogueDisplay('DeBread',dialogueBroken,'#ffb759')
     }

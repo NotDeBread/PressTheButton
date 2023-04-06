@@ -13,7 +13,7 @@ var dialogueTEST = [
     {
         character: 'debread',
         mood: 'normal',
-        text: 'Here are all of my current moods:'
+        text: 'Anyways, here are all of my moods:'
     },
     {
         character: 'debread',
@@ -59,6 +59,51 @@ var dialogueTEST = [
         character: 'debread',
         mood: 'lookAwaySmirk',
         text: 'lookAwaySmirk'
+    },
+    {
+        character: 'debread',
+        mood: 'annoyed',
+        text: 'Now time to test the character limit'
+    },
+    {
+        character: 'debread',
+        mood: 'lookAway',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    },
+    {
+        character: 'debread',
+        mood: 'normal2',
+        text: 'Wow it doesnt overflow'
+    },
+    {
+        character: 'debread',
+        mood: 'lookAwaySmirk',
+        text: 'cool'
+    },
+    {
+        character: 'debread',
+        mood: 'normal',
+        text: 'now time for text effects'
+    },
+    {
+        character: 'debread',
+        mood: 'normal',
+        text: `${textEffect('big','This is some big text')} with some normal text.`
+    },
+    {
+        character: 'debread',
+        mood: 'normal',
+        text: `This is some ${textEffect('color', 'colored','green')} text.`
+    },
+    {
+        character: 'debread',
+        mood: 'normal',
+        text: `This is some ${textEffect('shake','shaky')} text.`
+    },
+    {
+        character: 'guy',
+        mood: 'normal',
+        text: `This is a blank character`
     },
 ]
 
@@ -202,8 +247,10 @@ function dialogueDisplay(name, dialogueID, color) {
         dialogueProgression = 0
         dialogue.style.setProperty('height','125px')
         dialogue.style.setProperty('padding','10px')
+        dialogue.style.setProperty('background-image',`url(media/portraits/${dialogueID[dialogueProgression].character}/bg.png)`)
     
         dialogueImg.src = `media/portraits/${dialogueID[dialogueProgression].character}/${dialogueID[dialogueProgression].mood}.gif`
+
         dialogueText.innerHTML = dialogueID[dialogueProgression].text
         dialogueName.innerText = name
         dialogueName.style.color = `${color}`
@@ -214,6 +261,7 @@ function dialogueDisplay(name, dialogueID, color) {
                     dialogueProgression++
                     dialogueText.innerHTML = dialogueID[dialogueProgression].text
                     dialogue.src = dialogueImg.src = `media/portraits/${dialogueID[dialogueProgression].character}/${dialogueID[dialogueProgression].mood}.gif`
+                    dialogue.style.setProperty('background-image',`url(media/portraits/${dialogueID[dialogueProgression].character}/bg.png)`)
                 } else {
                     if(dialogueProgression >= 1) {
                         dialogueProgression = 0
@@ -241,3 +289,21 @@ function dialogueClose() {
     dialogue.style.setProperty('height','0')
     dialogue.style.setProperty('padding','0')
 }
+
+function textEffect(effect, text, color) {
+    if(effect === 'big') {
+        return `<span class="dBig">${text}</span>`
+    }
+    if(effect === 'color') {
+        return `<span style="color: ${color}">${text}</span>`
+    }
+    if(effect === 'shake') {
+        return `<div class="dShake"><span>${text}</span></div>`
+    }
+}
+
+// for(let i = 0; i <= 100; i++) {
+//     console.log(
+//         `${i}% {transform: translateX(${Math.round((Math.random() * 10 - 5) * 10) / 10}px) translateY(${Math.round((Math.random() * 10 - 5) * 10) / 10}px)`
+//     )
+// }
