@@ -23,10 +23,13 @@ const septillion = Math.pow(10, 21)
 const octillion = Math.pow(10, 24)
 const nonillion = Math.pow(10, 27)
 const decillion = Math.pow(10, 30)
+const undecillion = Math.pow(10, 33)
 
 function formatNumber(number) {
     if(save.formatNumbers && number !== Infinity) {
-        if(number >= decillion) {
+        if(number >= undecillion) {
+            return (Math.round(number / undecillion * 1000) / 1000) + " Undecillion"
+        } else if(number >= decillion) {
             return (Math.round(number / decillion * 1000) / 1000) + " Decillion"
         } else if(number >= nonillion) {
             return (Math.round(number / nonillion * 1000) / 1000) + " Nonillion"

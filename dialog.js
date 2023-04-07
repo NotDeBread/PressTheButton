@@ -101,27 +101,14 @@ var dialogueTEST = [
         text: `This is some ${textEffect('shake','shaky')} text.`
     },
     {
+        character: 'debread',
+        mood: 'normal',
+        text: `This is some ${textEffect('bold','bold')} text.`
+    },
+    {
         character: 'guy',
         mood: 'normal',
         text: `This is a blank character`
-    },
-]
-
-var dialogueText1 = [
-    {
-        character: 'debread',
-        mood: 'lookAway',
-        text: 'Bro is really messing with the console'
-    },
-    {
-        character: 'debread',
-        mood: 'normal2',
-        text: "that's kinda goofy tbh"
-    },
-    {
-        character: 'debread',
-        mood: 'smirk',
-        text: "it would be a shame if I took all of your points away..."
     },
 ]
 
@@ -139,33 +126,56 @@ var dialogue1M = [
     {
         character: 'debread',
         mood: 'normal2',
-        text: "That's the end of my game."
-    },
-    {
-        character: 'debread',
-        mood: 'normal2',
-        text: "I'll probably end up adding more stuff..."
-    },
-    {
-        character: 'debread',
-        mood: 'normal2',
-        text: "But in the meantime you could tweet me on <span style=\"color: #6eccff; font-weight: 700\">twitter</span> at @notdebread with ideas for more things."
+        text: "That's used to be the end of my game."
     },
     {
         character: 'debread',
         mood: 'lookAwaySmirk',
-        text: "(and follow all of my other socials)"
-    },
-    {
-        character: 'debread',
-        mood: 'normal2',
-        text: "I guess you can keep playing if you want but there isn't much after 1 Million..."
+        text: "But guess what"
     },
     {
         character: 'debread',
         mood: 'smirk',
-        text: "The counter goes up to 1 Decillion anyways..."
+        text: "I added more stuff"
     },
+    {
+        character: 'debread',
+        mood: 'normal2',
+        text: `${textEffect('bold','1 Billion')} is where the game ends now...`
+    },
+    {
+        character: 'debread',
+        mood: 'smirk',
+        text: 'Good luck.'
+    }
+]
+
+var dialogue1B = [
+    {
+        character: 'debread',
+        mood: 'smirk',
+        text: 'Nice, you made it to 1 Billion'
+    },
+    {
+        character: 'debread',
+        mood: 'normal',
+        text: 'You made it to the end of my game.'
+    },
+    {
+        character: 'debread',
+        mood: 'lookAway',
+        text: `Theres nothing much after this besides getting to ${textEffect('bold','1 Decillion')}`
+    },
+    {
+        character: 'debread',
+        mood: 'lookAwaySmirk',
+        text: 'Which there\'s no way you are getting to that...'
+    },
+    {
+        character: 'debread',
+        mood: 'smirk',
+        text: `(By the way, you can request features for me to add in the next update by DM\'ing me on Twitter or Discord found on my website, ${textEffect('bold','debread.space')}.)`
+    }
 ]
 
 var dialogue1D = [
@@ -234,8 +244,8 @@ var dialogueBroken = [
     },
     {
         character: 'debread',
-        mood: 'lookAwaySmirk',
-        text: 'You can like go outside and touch grass or something...'
+        mood: 'annoyed',
+        text: 'You should go touch grass...'
     },
 ]
 
@@ -299,6 +309,9 @@ function textEffect(effect, text, color) {
     }
     if(effect === 'shake') {
         return `<div class="dShake"><span>${text}</span></div>`
+    }
+    if(effect === 'bold') {
+        return `<strong>${text}</strong>`
     }
 }
 

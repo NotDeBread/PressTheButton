@@ -59,6 +59,10 @@ function achDisplay(name, desc, img, below) {
                     dialogueDisplay('DeBread',dialogue1M,'#ffb759')
                     save.millionPassed = true
                 }
+                if(save.clicks >= 1000000000 && save.achTenDig && save.billionPassed === false) {
+                    dialogueDisplay('DeBread',dialogue1B,'#ffb759')
+                    save.billionPassed = true
+                }
             }, 1000);
         }, 5000);
 
@@ -68,7 +72,7 @@ function achDisplay(name, desc, img, below) {
 setInterval(() => {
     if(save.clicksRaw >= 1 && save.achClicks === false && achActive === false) {
         save.achClicks = true
-        achDisplay('Click','Click the button.','click', `+1 Clicks per second`)
+        achDisplay('Click','Click the button.','click')
     }
     if(save.clicksRaw >= 1000 && save.achGoldenClicks === false && achActive === false) {
         save.achGoldenClicks = true
@@ -106,8 +110,23 @@ setInterval(() => {
     }
     if(save.clicks >= 1000000 && save.achSevenDig === false && achActive === false) {
         save.achSevenDig = true
-        save.clickMultiplierMultiplier *= 2
-        achDisplay('1 MILLION','Reach 1 Million score.','sevenDig',`+ x2 multiplier (x${formatNumber(save.clickMultiplierMultiplier)})`)
+        save.clickMultiplierMultiplier *= 7
+        achDisplay('1 MILLION','Reach 1 Million score.','sevenDig',`+ x7 multiplier (x${formatNumber(save.clickMultiplierMultiplier)})`)
+    }
+    if(save.clicks >= 10000000 && save.achEightDig === false && achActive === false) {
+        save.achEightDig = true
+        save.clickMultiplierMultiplier *= 8
+        achDisplay('10 MILLION','Reach 10 Million score.','eightDig',`+ x8 multiplier (x${formatNumber(save.clickMultiplierMultiplier)})`)
+    }
+    if(save.clicks >= 100000000 && save.achNineDig === false && achActive === false) {
+        save.achNineDig = true
+        save.clickMultiplierMultiplier *= 9
+        achDisplay('100 MILLION','Reach 100 Million score.','nineDig',`+ x9 multiplier (x${formatNumber(save.clickMultiplierMultiplier)})`)
+    }
+    if(save.clicks >= 1000000000 && save.achTenDig === false && achActive === false) {
+        save.achTenDig = true
+        save.clickMultiplierMultiplier *= 10
+        achDisplay('10^9','Reach 1 Billion score.','tenDig',`+ x10 multiplier (x${formatNumber(save.clickMultiplierMultiplier)})`)
     }
     if(save.hundredPowerReached === true && save.achPowah === false && achActive === false) {
         save.achPowah = true

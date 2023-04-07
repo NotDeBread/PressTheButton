@@ -23,6 +23,9 @@ const save = JSON.parse(localStorage.getItem("PTBSave")) ?? {
     achFiveDig: false,
     achSixDig: false,
     achSevenDig: false,
+    achEightDig: false,
+    achNineDig: false,
+    achTenDig: false,
 
     //Setting Stuff
 
@@ -34,6 +37,7 @@ const save = JSON.parse(localStorage.getItem("PTBSave")) ?? {
     timePlayed: 0,
 
     millionPassed: false,
+    billionPassed: false,
     decillionPassed: false,
     infinityReached: false,
 }

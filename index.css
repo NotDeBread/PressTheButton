@@ -8,6 +8,23 @@ body {
   overflow: hidden;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.version {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  left: 10px;
+  opacity: 0.5;
+}
+
+.version:hover {
+  text-decoration: underline;
+}
+
 .dialogue-container {
   position: absolute;
   top: 10px;
