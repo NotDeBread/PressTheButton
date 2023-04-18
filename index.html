@@ -11,7 +11,65 @@
 
 <body>
 
-    <a class="version" href="https://github.com/NotDeBread/PressTheButton/commits/master" target="_blank">v0.04</a>
+    <a class="version" href="https://github.com/NotDeBread/PressTheButton/commits/master" target="_blank">v0.05</a>
+
+    <span class="settingsButton" onclick="openSettings()">Settings</span>
+
+    <section class="menu-container" id="settingsMenu">
+        <div id="menu">
+            <div id="menuHeader">
+                <span id="menuHeaderText">Settings</span>
+                <div id="menuX" onclick="closeSettings()">
+                    <span>X</span>
+                </div>
+            </div>
+            <div class="menuContent">
+                <div class="setting">
+                    <input type="checkbox" checked id="cb1" onclick="settingsUpdate()">
+                    <div class="settingText">
+                        <span>SFX</span>
+                        <div class="settingLine"></div>
+                        <em>Sound Effects.</em>
+                    </div>
+                </div>
+                <div class="setting">
+                    <input type="checkbox" checked id="cb2" onclick="settingsUpdate()">
+                    <div class="settingText">
+                        <span>Format Numbers</span>
+                        <div class="settingLine"></div>
+                        <em>Format numbers like Million, Billion, ect. (This can break with larger numbers.)</em>
+                    </div>
+                </div>
+                <div class="setting">
+                    <input type="checkbox" id="cb3" onclick="settingsUpdate()">
+                    <div class="settingText">
+                        <span>Show points on click (experimental)</span>
+                        <div class="settingLine"></div>
+                        <em>Show how many points you get when you click.</em>
+                    </div>
+                </div>
+                <div class="buttonContainer">
+                    <div id="buttonDelete" onclick="deletesaveCheck()">
+                        <span>Delete Save</span>
+                    </div>
+                    <em style="color: grey; font-size: 0.75em;">Use this if the game breaks.</em>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="achProgressContainer">
+        <div id="achProgress">
+            <span>Achievement Progress</span>
+            <div id="achProgressText">
+                <span id="achProgressCount">0/19</span>
+                <span id="achProgressPercent">0%</span>
+            </div>
+            <div id="achProgressBar">
+                <div id="achProgressBarOverlay"></div>
+            </div>
+        </div>
+    </div>
 
     <div class="dialogue-container">
         <div id="dialogue">
@@ -26,17 +84,14 @@
         </div>
     </div>
 
-    <div class="achievement-container">
-        <div id="achievement">
+    <div id="achievement-container">
+        <!-- <div id="achievement">
             <img id="achImg" src="media/achievements/click.png">
             <div class="achievement-content">
                 <span id="achName">Achievement Name</span>
                 <em id="achDesc">Achievement Description</em>
             </div>
-        </div>
-        <div id="achBelow">
-            <span id="achBelowTXT">+PERMENENT X2 MULTIPLIER</span>
-        </div>
+        </div> -->
     </div>
 
     <div class="button-container">
@@ -46,7 +101,9 @@
             id="button"
             onclick="buttonClick()"
             onmousedown="button.src='media/button1.png'"
-            onmouseup="button.src='media/button0.png'">
+            onmouseup="button.src='media/button0.png'"
+            onmouseenter="buttonEnter()"
+            onmouseleave="buttonLeave()">
         <img src="media/shine.png" class="button-shine" id="buttonShine">
         <div style="text-align: center;">
             <span id="clicks">0</span><br>

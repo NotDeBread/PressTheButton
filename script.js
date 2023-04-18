@@ -9,8 +9,6 @@ const powerEquation = document.getElementById('powerBarEquation')
 
 var powerClicks = 0
 
-var timePlayed = 0
-
 //NUMBER FORMATTER
 
 const million = Math.pow(10, 6)
@@ -58,7 +56,47 @@ function formatNumber(number) {
 
 //BUTTON CLICK
 
+var clickText = function() {
+    var e = document.createElement('span');
+    e.setAttribute('class','clickText');
+    e.innerHTML = formatNumber(save.clickMultiplier * save.clickMultiplierMultiplier)
+    
+    
+    if(save.showPointsOnClick === true) {
+        document.body.appendChild(e),
+        e.style.top = event.pageY + 'px',
+        e.style.left = event.pageX - e.offsetWidth + 'px',
+        
+        setTimeout(() => {
+            e.style.setProperty('transform',`translateX(${(Math.random() * 400 - 200) - e.offsetWidth * 2}px) translateY(${Math.random() * 400 - 200}px) scale(100%) rotate(${Math.random() * 40 - 20}deg)`)
+            e.style.setProperty('font-weight','900')
+    
+            if(save.clickMultiplier >= 4) {
+                e.style.setProperty('font-size',`${save.clickMultiplier / 4}em`)
+            }
+        }, 1);
+        
+        setTimeout(() => {
+            e.style.setProperty('opacity','0')
+        }, 1000);
+    
+        setTimeout(() => {
+            document.body.removeChild(e)
+        }, 1500)
+    }
+}
+    
+function buttonEnter() {
+    document.addEventListener('click', clickText)
+}
+    
+function buttonLeave() {
+    document.removeEventListener('click', clickText)
+}
+
 clicksDisplay.innerText = formatNumber(save.clicks)
+
+var clickSpeed = 0
 
 function buttonClick() { 
     save.clicksRaw++
@@ -66,8 +104,18 @@ function buttonClick() {
 
     save.clicks += save.clickMultiplier * save.clickMultiplierMultiplier
 
-    if(powerClicks < 99) {
-        powerClicks += 1
+    if(save.achSevenDig) {
+        if(powerClicks < 199) {
+            powerClicks += 1
+        } else {
+            powerClicks = 200
+        }
+    } else {
+        if(powerClicks < 99) {
+            powerClicks += 1
+        } else {
+            powerClicks = 100
+        }
     }
 
     if(powerClicks >= 99) {
@@ -76,18 +124,31 @@ function buttonClick() {
 
     if(save.clicks >= decillion && !save.decillionPassed && !dialogueActive) {
         save.decillionPassed = true
-        dialogueDisplay('DeBread',dialogue1D,'#ffb759')
+        dialogueDisplay(dialogue1D)
     }
     
     if(save.clicks >= Infinity && !save.infinityReached && !dialogueActive) {
         save.infinityReached = true
-        dialogueDisplay('DeBread',dialogueBroken,'#ffb759')
+        dialogueDisplay(dialogueBroken)
     }
 
     clicksDisplay.innerText = formatNumber(save.clicks)
 
     powerUpdate()
+
+    clickSpeed++
+
+    if(clickSpeed >= 5 && !save.achPoorMouse) {
+        save.achPoorMouse = true
+        achDisplay('That Poor Mouse...','Click really, really fast', 'thatPoorMouse')
+    }
 }
+
+setInterval(() => {
+    if(clickSpeed > 0 && !save.achPoorMouse) {
+        clickSpeed--
+    }
+}, 100);
 
 //POWER BAR SETBACK
 
@@ -101,6 +162,9 @@ setInterval(() => {
     } else if((powerClicks-= 1) < 0) {
         powerClicks = 0
     }
+
+    if(powerClicks >= 100)
+    powerClicks -= powerClicks / 100
     powerUpdate()
 }, 150);
 
@@ -122,8 +186,13 @@ setInterval(() => {
     powerDisplay.style.setProperty('transform',`translateX(${Math.random() * powerClicks / 10}px) translateY(-${Math.random() * powerClicks / 10}px)`)
     powerMultiplier.style.setProperty('transform',`translateX(-${Math.random() * powerClicks / 10}px) translateY(-${Math.random() * powerClicks / 10}px)`)
     if(powerClicks >= 50) {
-        powerMultiplier.style.setProperty('font-size', `${powerClicks / 25}em`)
-        powerMultiplier.style.setProperty('font-weight', `${powerClicks * 9}`)
+        if(powerClicks >= 100) {
+            powerMultiplier.style.setProperty('font-size', `4em`)
+            powerMultiplier.style.setProperty('font-weight', `900`)
+        } else {
+            powerMultiplier.style.setProperty('font-size', `${powerClicks / 25}em`)
+            powerMultiplier.style.setProperty('font-weight', `${powerClicks * 9}`)
+        }
     }
 
     if(powerClicks / 10 >= 1) {
@@ -142,11 +211,71 @@ const shine = document.getElementById('buttonShine')
 var shineRotation = 0
 
 setInterval(() => {
-    shine.style.setProperty('opacity',powerClicks / 200)
+    if(powerClicks >= 100) {
+        shine.style.setProperty('opacity', '0.5')
+    } else {
+        shine.style.setProperty('opacity',powerClicks / 200)
+    }
     shineRotation += powerClicks / 100
     shine.style.setProperty('transform',`rotate(${shineRotation}deg)`)
+    button.style.setProperty('filter',`drop-shadow(0px 0px ${powerClicks / 5}px rgba(255, 255, 255, 25%))`)
 }, 10);
 
 setInterval(() => {
     save.timePlayed++
 }, 1000);
+
+function giveAllAchievements(achGiveDelay) {
+    buttonClick()
+    save.clicks = 1
+    setTimeout(() => {
+        save.clicks *= 10
+        setTimeout(() => {
+            save.clicks *= 10
+            setTimeout(() => {
+                save.clicks *= 10
+                setTimeout(() => {
+                    save.clicks *= 10
+                    setTimeout(() => {
+                        save.clicks *= 10
+                        setTimeout(() => {
+                            save.clicks *= 10
+                            setTimeout(() => {
+                                save.clicks *= 10
+                                setTimeout(() => {
+                                    save.clicks *= 10
+                                    setTimeout(() => {
+                                        save.clicks *= 10
+                                        setTimeout(() => {
+                                            save.clicksRaw = 1000
+                                            setTimeout(() => {
+                                                save.clicksRaw = 5000
+                                                setTimeout(() => {
+                                                    save.clicksRaw = 10000
+                                                    setTimeout(() => {
+                                                        powerClicks = 100
+                                                        buttonClick()
+                                                        setTimeout(() => {
+                                                            save.timePlayed = 3600
+                                                            setTimeout(() => {
+                                                                save.timePlayed = 36000
+                                                                setTimeout(() => {
+                                                                    clickSpeed = 100
+                                                                    buttonClick()
+                                                                }, achGiveDelay);
+                                                            }, achGiveDelay);
+                                                        }, achGiveDelay);
+                                                    }, achGiveDelay);
+                                                }, achGiveDelay);
+                                            }, achGiveDelay);
+                                        }, achGiveDelay);
+                                    }, achGiveDelay);
+                                }, achGiveDelay);
+                            }, achGiveDelay);
+                        }, achGiveDelay);
+                    }, achGiveDelay);
+                }, achGiveDelay);
+            }, achGiveDelay);
+        }, achGiveDelay);
+    }, achGiveDelay);
+}

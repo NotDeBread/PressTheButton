@@ -6,16 +6,22 @@ const save = JSON.parse(localStorage.getItem("PTBSave")) ?? {
 
     //Achievement Stuff
 
+    achievements: 0,
+
     hundredPowerReached: false,
 
     achClicks: false,
     achGoldenClicks: false,
     achPlatinumClicks: false,
+    achDiamondClicks: false,
 
     achPowah: false,
+    achPoorMouse: false,
 
     achOnlyClicking: false,
     achDedication: false,
+    achCantStop: false,
+    achEndlessClicking: false,
 
     achTwoDig: false,
     achThreeDig: false,
@@ -31,6 +37,7 @@ const save = JSON.parse(localStorage.getItem("PTBSave")) ?? {
 
     SFX: true,
     formatNumbers: true,
+    showPointsOnClick: false,
 
     //Other Sutff
 
