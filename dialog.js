@@ -427,6 +427,7 @@ function dialogueDisplay(dialogueID) {
     if(dialogueActive === false) {
         dialogueActive = true
         dialogueProgression = 0
+        let lettersShown = 0
         dialogue.style.setProperty('height','125px')
         dialogue.style.setProperty('padding','10px')
         dialogue.style.setProperty('background-image',`url(media/portraits/${dialogueID[dialogueProgression].character}/bg.png)`)
@@ -436,7 +437,7 @@ function dialogueDisplay(dialogueID) {
         dialogueText.innerHTML = dialogueID[dialogueProgression].text
         dialogueName.innerHTML = dialogueID[dialogueProgression].name
         dialogueName.style.color = `${dialogueID[dialogueProgression].nameColor}`
-    
+
         function handleKeyDown(event) {
             if(event.code === 'Space') {   
                 if(dialogueProgression < dialogueID.length - 1) {

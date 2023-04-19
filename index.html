@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" type="image/png" href="media/favicon.png">
     <title>Press The Button</title>
 </head>
 
 <body>
 
-    <a class="version" href="https://github.com/NotDeBread/PressTheButton/commits/master" target="_blank">v0.05</a>
+    <a class="version" href="https://github.com/NotDeBread/PressTheButton/commits/master" target="_blank">v0.06</a>
 
-    <span class="settingsButton" onclick="openSettings()">Settings</span>
+    <div id="topButtons">
+        <span onclick="openSettings()" class="topButton">Settings</span><br>
+        <span onclick="openStats()" class="topButton">Achievements</span><br>
+    </div>
 
     <section class="menu-container" id="settingsMenu">
         <div id="menu">
@@ -53,6 +57,39 @@
                         <span>Delete Save</span>
                     </div>
                     <em style="color: grey; font-size: 0.75em;">Use this if the game breaks.</em>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats-container">
+        <div id="stats">
+            <div id="menuHeader">
+                <span id="menuHeaderText">Achievements</span>
+                <div id="menuX" onclick="closeStats()">
+                    <span>X</span>
+                </div>
+            </div>
+            <div id="achProgressText">
+                <span id="statProgressCount">0/19</span>
+                <span id="statProgressPercent">0%</span>
+            </div>
+            <div id="achProgressBar">
+                <div id="statProgressBarOverlay"></div>
+            </div>
+            <div id="allStats">
+                <div id="statContainer">
+                    <!-- <div class="stat">
+                        <img src="media/achievements/click.png">
+                        <div class="statText">
+                            <span class="statTitle">Click</span>
+                            <span>Click the button.</span>
+                        </div>
+                    </div>
+                    <div class="statMultiplier">
+                        <span>-</span>
+                        <span>Multiplier</span>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -120,6 +157,7 @@
     <span id="powerBarMultiplier">x10</span>
 
     <div class="powerBar-container">
+        <div id="powerBar2"></div>
         <div id="powerBar"></div>
     </div>
 

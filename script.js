@@ -3,6 +3,7 @@ console.log('Bro is really about to cheat in points 💀')
 const button = document.getElementById('button')
 const clicksDisplay = document.getElementById('clicks')
 const powerBar = document.getElementById('powerBar')
+const powerBar2 = document.getElementById('powerBar2')
 const powerDisplay = document.getElementById('powerBarTXT')
 const powerMultiplier = document.getElementById('powerBarMultiplier')
 const powerEquation = document.getElementById('powerBarEquation')
@@ -140,7 +141,7 @@ function buttonClick() {
 
     if(clickSpeed >= 5 && !save.achPoorMouse) {
         save.achPoorMouse = true
-        achDisplay('That Poor Mouse...','Click really, really fast', 'thatPoorMouse')
+        achDisplay('That Poor Mouse...','Click really, really fast.', 'thatPoorMouse')
     }
 }
 
@@ -162,9 +163,6 @@ setInterval(() => {
     } else if((powerClicks-= 1) < 0) {
         powerClicks = 0
     }
-
-    if(powerClicks >= 100)
-    powerClicks -= powerClicks / 100
     powerUpdate()
 }, 150);
 
@@ -173,6 +171,11 @@ setInterval(() => {
 function powerUpdate() {
     powerDisplay.innerText = `POWER: ${Math.round(powerClicks)}`
     powerBar.style.setProperty('width',`${powerClicks}%`)
+    if(powerClicks >= 100) {
+        powerBar2.style.setProperty('width',`${powerClicks - 100}%`)
+    } else {
+        powerBar2.style.setProperty('width',`0`)
+    }
     if(powerClicks >= 90) {
         powerBar.style.setProperty('animation','rainbow 0.1s linear infinite')
     } else {

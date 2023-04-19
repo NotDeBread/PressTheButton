@@ -48,14 +48,12 @@ var deletesaveCount = 0
 
 function openSettings() {
     settings.style.setProperty('display','flex')
-    setTimeout(() => {
-        settings.style.setProperty('backdrop-filter','blur(10px)')
-    }, 10);
+    document.getElementById('buttonDelete').innerText = 'Delete Save'
+
 }
 
 function closeSettings() {
     settings.style.setProperty('display','none')
-    settings.style.setProperty('backdrop-filter','blur(0px)')
     deletesaveCount = 0
 }
 

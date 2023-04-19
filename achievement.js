@@ -123,22 +123,22 @@ setInterval(() => {
     if(save.timePlayed >= 3600 && save.achDedication === false) {
         save.achDedication = true
         save.clickMultiplierMultiplier *= 10
-        achDisplay('Pure Dedication','Play for 1 hour','dedication')
+        achDisplay('Pure Dedication','Play for 1 hour.','dedication')
     }
     if(save.timePlayed >= 7200 && save.achOnlyClicking === false) {
         save.achOnlyClicking = true
         save.clickMultiplierMultiplier *= 20
-        achDisplay('Only clicking in mind','Play for 2 hours','onlyClicking')
+        achDisplay('Only clicking in mind','Play for 2 hours.','onlyClicking')
     }
     if(save.timePlayed >= 10800 && save.achCantStop === false) {
         save.achCantStop = true
         save.clickMultiplierMultiplier *= 30
-        achDisplay('Can\'t Stop','Play for 3 hours','cantStop')
+        achDisplay('Can\'t Stop','Play for 3 hours.','cantStop')
     }
     if(save.timePlayed >= 14400 && save.achEndlessClicking === false) {
         save.achEndlessClicking = true
         save.clickMultiplierMultiplier *= 40
-        achDisplay('Endless Clicking','Play for 4 hours','endlessClicking')
+        achDisplay('Endless Clicking','Play for 4 hours.','endlessClicking')
     }
 }, 500);
 
@@ -149,11 +149,12 @@ const achProgressBarOverlay = document.getElementById('achProgressBarOverlay')
 
 function progressBarUpdate() {
     achProgressContainer.style.setProperty('top','10px')
+    document.getElementById('topButtons').style.setProperty('opacity','0')
     setTimeout(() => {        
         achProgressCount.innerText = `${save.achievements}/19`
         achProgressPercent.innerText = `${Math.round(save.achievements / 19 * 100)}%`
         achProgressBarOverlay.style.setProperty('width',`${save.achievements / 19 * 100}%`)
-        if(save.achievements === 17) {
+        if(save.achievements === 19) {
             achProgressPercent.classList.add('percentAnimate')
             achProgressCount.classList.add('percentAnimate')
             achProgressBarOverlay.style.setProperty('animation','rainbow 0.5s linear infinite')
@@ -163,7 +164,180 @@ function progressBarUpdate() {
     var stay = setInterval(() => {
         if(document.getElementById('achievement-container').children.length === 0) {
             achProgressContainer.style.setProperty('top','-100px')
+            document.getElementById('topButtons').style.setProperty('opacity','1')
             clearInterval(stay)
         }
     }, 1000);
 }
+
+function closeStats() {
+    document.getElementById('stats-container').style.setProperty('display','none')
+    document.getElementById('statProgressBarOverlay').style.setProperty('width','0')
+    document.getElementById('statProgressPercent').classList.remove('percentAnimate')
+    document.getElementById('statProgressCount').classList.remove('percentAnimate')
+    document.getElementById('statProgressBarOverlay').style.setProperty('animation','none')
+}
+
+function openStats() {
+
+    const achievements = [
+        {
+            name: 'Click',
+            desc: 'Click the button.',
+            img: 'click',
+            requirement: save.clicksRaw >= 1,
+            multiplier: '-'
+        },
+        {
+            name: 'Golden Clicks',
+            desc: 'Click the button 1,000 times.',
+            img: 'goldenClicks',
+            requirement: save.clicksRaw >= 1000,
+            multiplier: '2x'
+        },
+        {
+            name: 'Platinum Clicks',
+            desc: 'Click the button 5,000 times.',
+            img: 'platinumClicks',
+            requirement: save.clicksRaw >= 5000,
+            multiplier: '4x'
+        },
+        {
+            name: 'Diamond Clicks',
+            desc: 'Click the button 10,000 times.',
+            img: 'diamondClicks',
+            requirement: save.clicksRaw >= 10000,
+            multiplier: '6x'
+        },
+        {
+            name: 'Two Digits',
+            desc: 'Reach 10 score.',
+            img: 'twoDig',
+            requirement: save.clicks >= 10,
+            multiplier: '2x'
+        },
+        {
+            name: 'Three Digits',
+            desc: 'Reach 100 score.',
+            img: 'threeDig',
+            requirement: save.clicks >= 100,
+            multiplier: '2x'
+        },
+        {
+            name: 'Four Digits',
+            desc: 'Reach 1,000 score.',
+            img: 'fourDig',
+            requirement: save.clicks >= 1000,
+            multiplier: '2x'
+        },
+        {
+            name: 'Five Digits',
+            desc: 'Reach 10,000 score.',
+            img: 'fiveDig',
+            requirement: save.clicks >= 10000,
+            multiplier: '2x'
+        },
+        {
+            name: 'Six Digits',
+            desc: 'Reach 100,000 score.',
+            img: 'sixDig',
+            requirement: save.clicks >= 100000,
+            multiplier: '2x'
+        },
+        {
+            name: '1 MILLION',
+            desc: 'Reach 1 Million score. 💬',
+            img: 'sevenDig',
+            requirement: save.clicks >= million,
+            multiplier: '20x'
+        },
+        {
+            name: '10 MILLION',
+            desc: 'Reach 10 Million score.',
+            img: 'eightDig',
+            requirement: save.clicks >= million * 10,
+            multiplier: '10x'
+        },
+        {
+            name: '100 MILLION',
+            desc: 'Reach 100 Million score.',
+            img: 'nineDig',
+            requirement: save.clicks >= million * 100,
+            multiplier: '10x'
+        },
+        {
+            name: '10^9',
+            desc: 'Reach 1 Billion score. 💬',
+            img: 'tenDig',
+            requirement: save.clicks >= billion,
+            multiplier: '20x'
+        },
+        {
+            name: 'POWAH!!!',
+            desc: 'Reach 100 POWER.',
+            img: 'powah',
+            requirement: save.hundredPowerReached,
+            multiplier: '2x'
+        },
+        {
+            name: 'That poor mouse...',
+            desc: 'Click really, really fast.',
+            img: 'thatPoorMouse',
+            requirement: save.achPoorMouse,
+            multiplier: '-'
+        },
+        {
+            name: 'Pure Dedication',
+            desc: 'Play for 1 hour.',
+            img: 'dedication',
+            requirement: save.timePlayed >= 3600,
+            multiplier: '10x'
+        },
+        {
+            name: 'Only clicking in mind',
+            desc: 'Play for 2 hours.',
+            img: 'onlyClicking',
+            requirement: save.timePlayed >= 7200,
+            multiplier: '20x'
+        },
+        {
+            name: 'Can\'t Stop',
+            desc: 'Play for 3 hours.',
+            img: 'cantStop',
+            requirement: save.timePlayed >= 10800,
+            multiplier: '30x'
+        },
+        {
+            name: 'Endless Clicing',
+            desc: 'Play for 4 hours.',
+            img: 'endlessClicking',
+            requirement: save.timePlayed >= 14400,
+            multiplier: '40x'
+        },
+    ]
+
+    autosave()
+    document.getElementById('allStats').innerHTML = ''
+    document.getElementById('statProgressCount').innerText = `${save.achievements}/19`
+    document.getElementById('statProgressPercent').innerText = `${Math.round(save.achievements / 19 * 100)}%`
+    setTimeout(() => {
+        document.getElementById('statProgressBarOverlay').style.setProperty('width',`${save.achievements / 19 * 100}%`)
+        setTimeout(() => {
+            if(save.achievements === 19) {
+                document.getElementById('statProgressPercent').classList.add('percentAnimate')
+                document.getElementById('statProgressCount').classList.add('percentAnimate')
+                document.getElementById('statProgressBarOverlay').style.setProperty('animation','rainbow 0.5s linear infinite')
+            }
+        }, 2000);
+    }, 500);
+    document.getElementById('stats-container').style.setProperty('display','flex')
+    for(let a = 0; a < achievements.length; a++) {
+        var statAchievement = document.createElement('div')
+        statAchievement.classList.add('statContainer')
+        statAchievement.innerHTML = `<div class="stat"><img src="media/achievements/${achievements[a].img}.png"><div class="statText"><span class="statTitle">${achievements[a].name}</span><span>${achievements[a].desc}</span></div></div><div class="statMultiplier"><span>${achievements[a].multiplier}</span><span>Multiplier</span></div>`
+        if(!eval(achievements[a].requirement)) {
+            statAchievement.style.setProperty('filter','brightness(75%) grayscale()')
+        }
+        document.getElementById('allStats').appendChild(statAchievement)
+    }
+} 
