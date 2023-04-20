@@ -15,18 +15,84 @@ var powerClicks = 0
 const million = Math.pow(10, 6)
 const billion = Math.pow(10, 9)
 const trillion = Math.pow(10, 12)
-const quadrillion = Math.pow(10, 12)
-const quintillion = Math.pow(10, 15)
-const sextillion = Math.pow(10, 18)
-const septillion = Math.pow(10, 21)
-const octillion = Math.pow(10, 24)
-const nonillion = Math.pow(10, 27)
-const decillion = Math.pow(10, 30)
-const undecillion = Math.pow(10, 33)
+const quadrillion = Math.pow(10, 15)
+const quintillion = Math.pow(10, 18)
+const sextillion = Math.pow(10, 21)
+const septillion = Math.pow(10, 24)
+const octillion = Math.pow(10, 27)
+const nonillion = Math.pow(10, 30)
+const decillion = Math.pow(10, 33)
+const undecillion = Math.pow(10, 36)
+const duodecillion = Math.pow(10, 39)
+const tredecillion = Math.pow(10, 42)
+const quattuordecillion = Math.pow(10, 45)
+const quindecillion = Math.pow(10, 48)
+const sexdecillion = Math.pow(10, 51)
+const septemdecillion = Math.pow(10, 54)
+const octodecillion = Math.pow(10, 57)
+const novemdecillion = Math.pow(10, 60)
+const vigintillion = Math.pow(10, 63)
+const unvigintillion = Math.pow(10, 66)
+const duovigintillion = Math.pow(10, 69)
+const trevigintillion = Math.pow(10, 72)
+const quattuorvigintillion = Math.pow(10, 75)
+const quinvigintillion = Math.pow(10, 78)
+const sexvigintillion = Math.pow(10, 81)
+const septvigintillion = Math.pow(10, 84)
+const octovigintillion = Math.pow(10, 87)
+const nonvigintillion = Math.pow(10, 90)
+const trigintillion = Math.pow(10, 93)
+const untrigintillion = Math.pow(10, 96)
+const duotrigintillion = Math.pow(10, 99)
+const googol = Math.pow(10, 100)
 
 function formatNumber(number) {
-    if(save.formatNumbers && number !== Infinity) {
-        if(number >= undecillion) {
+    if(save.formatNumbers) {
+        if(number >= googol) {
+            return (Math.round(number / googol * 1000) / 1000) + " Googol"
+        } else if(number >= duotrigintillion) {
+            return (Math.round(number / duotrigintillion * 1000) / 1000) + " Duotrigintillion"
+        } else if(number >= untrigintillion) {
+            return (Math.round(number / untrigintillion * 1000) / 1000) + " Untrigintillion"
+        } else if(number >= trigintillion) {
+            return (Math.round(number / trigintillion * 1000) / 1000) + " Trigintillion"
+        } else if(number >= nonvigintillion) {
+            return (Math.round(number / nonvigintillion * 1000) / 1000) + " Nonvigintillion"
+        } else if(number >= octovigintillion) {
+            return (Math.round(number / octovigintillion * 1000) / 1000) + " Octovigintillion"
+        } else if(number >= septvigintillion) {
+            return (Math.round(number / septvigintillion * 1000) / 1000) + " Septvigintillion"
+        } else if(number >= sexvigintillion) {
+            return (Math.round(number / sexvigintillion * 1000) / 1000) + " Sexvigintillion"
+        } else if(number >= quinvigintillion) {
+            return (Math.round(number / quinvigintillion * 1000) / 1000) + " Quinvigintillion"
+        } else if(number >= quattuorvigintillion) {
+            return (Math.round(number / quattuorvigintillion * 1000) / 1000) + " Quattuorvigintillion"
+        } else if(number >= trevigintillion) {
+            return (Math.round(number / trevigintillion * 1000) / 1000) + " Trevigintillion"
+        } else if(number >= duovigintillion) {
+            return (Math.round(number / duovigintillion * 1000) / 1000) + " Duovigintillion"
+        } else if(number >= unvigintillion) {
+            return (Math.round(number / unvigintillion * 1000) / 1000) + " Unvigintillion"
+        } else if(number >= vigintillion) {
+            return (Math.round(number / vigintillion * 1000) / 1000) + " Vigintillion"
+        } else if(number >= novemdecillion) {
+            return (Math.round(number / novemdecillion * 1000) / 1000) + " Novemdecillion"
+        } else if(number >= octodecillion) {
+            return (Math.round(number / octodecillion * 1000) / 1000) + " Octodecillion"
+        } else if(number >= septemdecillion) {
+            return (Math.round(number / septemdecillion * 1000) / 1000) + " Septemdecillion"
+        } else if(number >= sexdecillion) {
+            return (Math.round(number / sexdecillion * 1000) / 1000) + " Sexdecillion"
+        } else if(number >= quindecillion) {
+            return (Math.round(number / quindecillion * 1000) / 1000) + " Quindecillion"
+        } else if(number >= quattuordecillion) {
+            return (Math.round(number / quattuordecillion * 1000) / 1000) + " Quattuordecillion"
+        } else if(number >= tredecillion) {
+            return (Math.round(number / tredecillion * 1000) / 1000) + " Tredecillion"
+        } else if(number >= duodecillion) {
+            return (Math.round(number / duodecillion * 1000) / 1000) + " Duodecillion"
+        } else if(number >= undecillion) {
             return (Math.round(number / undecillion * 1000) / 1000) + " Undecillion"
         } else if(number >= decillion) {
             return (Math.round(number / decillion * 1000) / 1000) + " Decillion"
@@ -48,13 +114,44 @@ function formatNumber(number) {
             return (Math.round(number / billion * 1000) / 1000) + " Billion"
         } else if(number >= million) {
             return (Math.round(number / million * 1000) / 1000) + " Million"
+        } else {
+            return Math.round(number).toLocaleString()            
         }
     } else {
         return Math.round(number).toLocaleString()
     }
-    return Math.round(number).toLocaleString()
 }
 
+function formatTime(time) {
+    let days = 0
+    let hours = 0
+    let minutes = 0
+    let seconds = 0
+  
+    if (time >= 86400) {
+      days = Math.floor(time / 86400)
+      time %= 86400
+    }
+  
+    if (time >= 3600) {
+      hours = Math.floor(time / 3600)
+      time %= 3600
+    }
+  
+    if (time >= 60) {
+      minutes = Math.floor(time / 60)
+      time %= 60
+    }
+  
+    seconds = Math.floor(time)
+  
+    const daysString = days === 1 ? 'day' : 'days'
+    const hoursString = hours === 1 ? 'hour' : 'hours'
+    const minutesString = minutes === 1 ? 'minute' : 'minutes'
+    const secondsString = seconds === 1 ? 'second' : 'seconds'
+  
+    return `${days} ${daysString}, ${hours} ${hoursString}, ${minutes} ${minutesString}, and ${seconds} ${secondsString}.`
+}
 //BUTTON CLICK
 
 var clickText = function() {

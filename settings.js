@@ -1,7 +1,5 @@
 const settings = document.getElementById('settingsMenu')
-const cb1 = document.getElementById('cb1')
-const cb2 = document.getElementById('cb2')
-const cb3 = document.getElementById('cb3')
+const cb = document.querySelectorAll('input[type="checkbox"]');
 
 if(save.SFX) {
     cb1.checked = true
@@ -21,26 +19,28 @@ if(save.showPointsOnClick) {
     cb3.checked = false
 }
 
+if(save.dialogueEnabled) {
+    cb4.checked = true
+} else {
+    cb4.checked = false
+}
+
 settingsUpdate()
 
 function settingsUpdate() {
-    if(cb1.checked) {
-        save.SFX = true
-    } else {
-        save.SFX = false
-        cb1.checked = false
-    }
-    if(cb2.checked) {
-        save.formatNumbers = true
-    } else {
-        save.formatNumbers = false
-        cb2.checked = false
-    }
-    if(cb3.checked) {
-        save.showPointsOnClick = true
-    } else {
-        save.showPointsOnClick = false
-        cb3.checked = false
+    let settingNames = [
+        'SFX',
+        'formatNumbers',
+        'showPointsOnClick',
+        'dialogueEnabled'
+    ]
+    for(let i = 0; i < settingNames.length; i++) {
+        if(cb[i].checked) {
+            save[settingNames[i]] = true
+        } else {
+            save[settingNames[i]] = false
+            cb[i].checked = false
+        }
     }
 }
 
@@ -64,4 +64,17 @@ function deletesaveCheck() {
         deletesaveCount++
         document.getElementById('buttonDelete').innerText = 'Are you sure?'
     }
+}
+
+//get outta here
+
+document.addEventListener('keydown', (event) => {
+    if (event.ctrlKey && event.key === 'q') {
+        document.getElementById('devtools').style.setProperty('display','unset')
+        console.log('aint no way bruh 💀💀🗿')
+    }
+})
+
+function closeDevtools() {
+    document.getElementById('devtools').style.setProperty('display','none')
 }

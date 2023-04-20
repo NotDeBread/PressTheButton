@@ -308,7 +308,7 @@ function openStats() {
             multiplier: '30x'
         },
         {
-            name: 'Endless Clicing',
+            name: 'Endless Clicking',
             desc: 'Play for 4 hours.',
             img: 'endlessClicking',
             requirement: save.timePlayed >= 14400,
@@ -328,7 +328,7 @@ function openStats() {
                 document.getElementById('statProgressCount').classList.add('percentAnimate')
                 document.getElementById('statProgressBarOverlay').style.setProperty('animation','rainbow 0.5s linear infinite')
             }
-        }, 2000);
+        }, 3000);
     }, 500);
     document.getElementById('stats-container').style.setProperty('display','flex')
     for(let a = 0; a < achievements.length; a++) {
@@ -341,3 +341,7 @@ function openStats() {
         document.getElementById('allStats').appendChild(statAchievement)
     }
 } 
+
+setInterval(() => {
+    document.getElementById('timePlayed').innerText = `Time Played: ${formatTime(save.timePlayed)}`
+}, 1000);

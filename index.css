@@ -76,7 +76,7 @@ a {
   box-shadow: 2px 2px inset rgb(50, 50, 50), -2px -2px inset rgb(30, 30, 30);
 }
 
-#menuHeader {
+#menuHeader, #devtoolsHeader {
   display: flex;
   gap: 10px;
 }
@@ -178,7 +178,7 @@ a {
 #statProgressBarOverlay {
   height: 100%;
   width: 0;
-  transition: width ease-in-out 2s;
+  transition: width cubic-bezier(.5,0,.25,1) 3s;
   background-color: white;
   border-radius: 5px;
 }
@@ -221,6 +221,25 @@ a {
   padding: 0 5px;
   background-color: rgb(40, 40, 40);
   box-shadow: 2px 2px inset rgb(50, 50, 50), -2px -2px inset rgb(30, 30, 30);
+}
+
+#devtools {
+  position: absolute;
+  display: none;
+  padding: 5px;
+  top: 400px;
+  z-index: 6;
+  background-color: rgb(40, 40, 40);
+  box-shadow: 2px 2px inset rgb(50, 50, 50), -2px -2px inset rgb(30, 30, 30);
+}
+
+.devButton {
+  margin-top: 10px;
+  outline: 1px solid grey;
+  background-color: rgb(20, 20, 20);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
 #achProgressContainer {

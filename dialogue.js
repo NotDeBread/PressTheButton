@@ -424,10 +424,9 @@ var dialogueBroken = [
 var dialogueActive = false
 
 function dialogueDisplay(dialogueID) {
-    if(dialogueActive === false) {
+    if(!dialogueActive && save.dialogueEnabled === true) {
         dialogueActive = true
         dialogueProgression = 0
-        let lettersShown = 0
         dialogue.style.setProperty('height','125px')
         dialogue.style.setProperty('padding','10px')
         dialogue.style.setProperty('background-image',`url(media/portraits/${dialogueID[dialogueProgression].character}/bg.png)`)
@@ -492,9 +491,3 @@ function textEffect(effect, text, color) {
         return `<span style="font-size: 0.25em">${text}</span`
     }
 }
-
-// for(let i = 0; i <= 100; i++) {
-//     console.log(
-//         `${i}% {transform: translateX(${Math.round((Math.random() * 10 - 5) * 10) / 10}px) translateY(${Math.round((Math.random() * 10 - 5) * 10) / 10}px)`
-//     )
-// }

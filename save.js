@@ -1,4 +1,22 @@
-const save = JSON.parse(localStorage.getItem("PTBSave")) ?? {
+const SAVE_DATA_VERSION = 2
+
+let savedData = localStorage.getItem("PTBSave")
+
+let save
+
+try {
+  save = savedData ? JSON.parse(savedData) : null
+  if (save && save.version !== SAVE_DATA_VERSION) {
+    save = null
+  }
+} catch (error) {
+  save = null
+}
+
+if (!save) {
+  save = {
+    version: SAVE_DATA_VERSION,
+
     clicksRaw: 0,
     clicks: 0,
     clickMultiplier: 1,
@@ -38,8 +56,9 @@ const save = JSON.parse(localStorage.getItem("PTBSave")) ?? {
     SFX: true,
     formatNumbers: true,
     showPointsOnClick: false,
+    dialogueEnabled: false,
 
-    //Other Sutff
+    //Other Stuff
 
     timePlayed: 0,
 
@@ -47,22 +66,19 @@ const save = JSON.parse(localStorage.getItem("PTBSave")) ?? {
     billionPassed: false,
     decillionPassed: false,
     infinityReached: false,
-}
-
-if(save.clicks === NaN) {
-    deletesave()
+  }
 }
 
 // Autosaving
 
-setInterval(autosave, 60000);
+setInterval(autosave, 60000)
 
 function autosave() {
-    localStorage.setItem("PTBSave", JSON.stringify(save));
-    console.log(`Autosaved ${formatNumber(save.clicks)} Points!`);
+  localStorage.setItem("PTBSave", JSON.stringify(save))
+  console.log(`Autosaved ${formatNumber(save.clicks)} Points!`)
 }
 
 function deletesave() {
-    localStorage.removeItem("PTBSave", JSON.stringify(save));
-    window.location.reload();
+  localStorage.removeItem("PTBSave")
+  window.location.reload()
 }

@@ -12,7 +12,7 @@
 
 <body>
 
-    <a class="version" href="https://github.com/NotDeBread/PressTheButton/commits/master" target="_blank">v0.06</a>
+    <a class="version" href="https://github.com/NotDeBread/PressTheButton/commits/master" target="_blank">v0.07</a>
 
     <div id="topButtons">
         <span onclick="openSettings()" class="topButton">Settings</span><br>
@@ -50,6 +50,14 @@
                         <span>Show points on click (experimental)</span>
                         <div class="settingLine"></div>
                         <em>Show how many points you get when you click.</em>
+                    </div>
+                </div>
+                <div class="setting">
+                    <input type="checkbox" id="cb4" onclick="settingsUpdate()">
+                    <div class="settingText">
+                        <span>Enable Dialogue</span>
+                        <div class="settingLine"></div>
+                        <em>Shows dialogue when you get certain achievements marked with 💬.</em>
                     </div>
                 </div>
                 <div class="buttonContainer">
@@ -91,6 +99,35 @@
                         <span>Multiplier</span>
                     </div> -->
                 </div>
+            </div>
+            <span id="timePlayed">Time Played: </span>
+        </div>
+    </section>
+
+    <section id="devtools" draggable="true">
+        <div id="devtoolsHeader">
+            <span id="menuHeaderText">Developer Tools</span>
+            <div id="menuX" onclick="closeDevtools()">
+                <span>X</span>
+            </div>
+        </div>
+        <div class="devButton" onclick="giveAllAchievements()">
+            <span>Give all achievements</span>
+        </div>
+        <div style="display: flex; gap: 10px">
+            <div class="devButton" onclick="save.clicks *= 1000; clicksDisplay.innerText = formatNumber(save.clicks)">
+                <span>Points x1,000</span>
+            </div>
+            <div class="devButton" onclick="save.clicks /= 1000; clicksDisplay.innerText = formatNumber(save.clicks)">
+                <span>Points /1,000</span>
+            </div>
+        </div>
+        <div style="display: flex; gap: 10px">
+            <div class="devButton" onclick="save.clicksRaw *= 1000; document.getElementById('clicksRaw').innerText = formatNumber(save.clicksRaw)">
+                <span>Clicks x1,000</span>
+            </div>
+            <div class=" devButton" onclick="save.clicksRaw /= 1000; document.getElementById('clicksRaw').innerText = formatNumber(save.clicksRaw)">
+                <span>Clicks /1,000</span>
             </div>
         </div>
     </section>
@@ -165,7 +202,7 @@
     <script src="settings.js"></script>
     <script src="script.js"></script>
     <script src="achievement.js"></script>
-    <script src="dialog.js"></script>
+    <script src="dialogue.js"></script>
 </body>
 
 </html>
