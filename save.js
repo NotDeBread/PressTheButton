@@ -1,4 +1,4 @@
-const SAVE_DATA_VERSION = 2
+const SAVE_DATA_VERSION = 3
 
 let savedData = localStorage.getItem("PTBSave")
 
@@ -27,6 +27,7 @@ if (!save) {
     achievements: 0,
 
     hundredPowerReached: false,
+    twoHundredPowerReached: false,
 
     achClicks: false,
     achGoldenClicks: false,
@@ -34,6 +35,7 @@ if (!save) {
     achDiamondClicks: false,
 
     achPowah: false,
+    achOver9000: false,
     achPoorMouse: false,
 
     achOnlyClicking: false,

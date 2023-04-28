@@ -120,6 +120,11 @@ setInterval(() => {
         save.clickMultiplierMultiplier *= 2
         achDisplay('POWAHH!!!','Reach 100 POWER.','powah')
     }
+    if(save.twoHundredPowerReached === true && save.achOver9000 === false) {
+        save.achOver9000 = true
+        save.clickMultiplierMultiplier *= 3
+        achDisplay('ITS OVER 100!','Reach 200 POWER.','over100')
+    }
     if(save.timePlayed >= 3600 && save.achDedication === false) {
         save.achDedication = true
         save.clickMultiplierMultiplier *= 10
@@ -147,14 +152,16 @@ const achProgressCount = document.getElementById('achProgressCount')
 const achProgressPercent = document.getElementById('achProgressPercent')
 const achProgressBarOverlay = document.getElementById('achProgressBarOverlay')
 
+var totalAchievements = 20
+
 function progressBarUpdate() {
     achProgressContainer.style.setProperty('top','10px')
     document.getElementById('topButtons').style.setProperty('opacity','0')
     setTimeout(() => {        
-        achProgressCount.innerText = `${save.achievements}/19`
-        achProgressPercent.innerText = `${Math.round(save.achievements / 19 * 100)}%`
-        achProgressBarOverlay.style.setProperty('width',`${save.achievements / 19 * 100}%`)
-        if(save.achievements === 19) {
+        achProgressCount.innerText = `${save.achievements}/${totalAchievements}`
+        achProgressPercent.innerText = `${Math.round(save.achievements / totalAchievements * 100)}%`
+        achProgressBarOverlay.style.setProperty('width',`${save.achievements / totalAchievements * 100}%`)
+        if(save.achievements === totalAchievements) {
             achProgressPercent.classList.add('percentAnimate')
             achProgressCount.classList.add('percentAnimate')
             achProgressBarOverlay.style.setProperty('animation','rainbow 0.5s linear infinite')
@@ -179,7 +186,6 @@ function closeStats() {
 }
 
 function openStats() {
-
     const achievements = [
         {
             name: 'Click',
@@ -246,7 +252,7 @@ function openStats() {
         },
         {
             name: '1 MILLION',
-            desc: 'Reach 1 Million score. 💬',
+            desc: 'Reach 1 Million score. <span class="achInfo" title="Triggers Dialogue.">💬</span><span class="achInfo" title="Raises max POWER to 200.">⬆️</span>',
             img: 'sevenDig',
             requirement: save.clicks >= million,
             multiplier: '20x'
@@ -278,6 +284,13 @@ function openStats() {
             img: 'powah',
             requirement: save.hundredPowerReached,
             multiplier: '2x'
+        },
+        {
+            name: 'ITS OVER 100!!',
+            desc: 'Reach 200 POWER.',
+            img: 'over100',
+            requirement: save.twoHundredPowerReached,
+            multiplier: '3x'
         },
         {
             name: 'That poor mouse...',
@@ -318,12 +331,12 @@ function openStats() {
 
     autosave()
     document.getElementById('allStats').innerHTML = ''
-    document.getElementById('statProgressCount').innerText = `${save.achievements}/19`
-    document.getElementById('statProgressPercent').innerText = `${Math.round(save.achievements / 19 * 100)}%`
+    document.getElementById('statProgressCount').innerText = `${save.achievements}/${totalAchievements}`
+    document.getElementById('statProgressPercent').innerText = `${Math.round(save.achievements / totalAchievements * 100)}%`
     setTimeout(() => {
-        document.getElementById('statProgressBarOverlay').style.setProperty('width',`${save.achievements / 19 * 100}%`)
+        document.getElementById('statProgressBarOverlay').style.setProperty('width',`${save.achievements / totalAchievements * 100}%`)
         setTimeout(() => {
-            if(save.achievements === 19) {
+            if(save.achievements === totalAchievements) {
                 document.getElementById('statProgressPercent').classList.add('percentAnimate')
                 document.getElementById('statProgressCount').classList.add('percentAnimate')
                 document.getElementById('statProgressBarOverlay').style.setProperty('animation','rainbow 0.5s linear infinite')

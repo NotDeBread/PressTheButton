@@ -12,7 +12,7 @@
 
 <body>
 
-    <a class="version" href="https://github.com/NotDeBread/PressTheButton/commits/master" target="_blank">v0.07</a>
+    <a class="version" href="https://github.com/NotDeBread/PressTheButton/commits/master" target="_blank">v0.08</a>
 
     <div id="topButtons">
         <span onclick="openSettings()" class="topButton">Settings</span><br>
@@ -61,6 +61,9 @@
                     </div>
                 </div>
                 <div class="buttonContainer">
+                    <div id="buttonSave" onclick="autoSave()">
+                        <span>Save</span>
+                    </div>
                     <div id="buttonDelete" onclick="deletesaveCheck()">
                         <span>Delete Save</span>
                     </div>
@@ -79,7 +82,7 @@
                 </div>
             </div>
             <div id="achProgressText">
-                <span id="statProgressCount">0/19</span>
+                <span id="statProgressCount">0/20</span>
                 <span id="statProgressPercent">0%</span>
             </div>
             <div id="achProgressBar">

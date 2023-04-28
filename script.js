@@ -150,7 +150,15 @@ function formatTime(time) {
     const minutesString = minutes === 1 ? 'minute' : 'minutes'
     const secondsString = seconds === 1 ? 'second' : 'seconds'
   
-    return `${days} ${daysString}, ${hours} ${hoursString}, ${minutes} ${minutesString}, and ${seconds} ${secondsString}.`
+    if(days >= 1) {
+        return `${days} ${daysString}, ${hours} ${hoursString}, ${minutes} ${minutesString}, and ${seconds} ${secondsString}.`
+    } else if(hours >= 1) {
+        return `${hours} ${hoursString}, ${minutes} ${minutesString}, and ${seconds} ${secondsString}.`
+    } else if(minutes >= 1) {
+        return `${minutes} ${minutesString}, and ${seconds} ${secondsString}.`
+    } else {
+        return `${seconds} ${secondsString}.`
+    }
 }
 //BUTTON CLICK
 
@@ -220,6 +228,10 @@ function buttonClick() {
         save.hundredPowerReached = true
     }
 
+    if(powerClicks >= 199) {
+        save.twoHundredPowerReached = true
+    }
+
     if(save.clicks >= decillion && !save.decillionPassed && !dialogueActive) {
         save.decillionPassed = true
         dialogueDisplay(dialogue1D)
@@ -253,12 +265,8 @@ setInterval(() => {
 setInterval(() => {
     if(powerClicks <= 0) {
         powerClicks = 0
-    } else if(powerClicks >= 75) {
-        powerClicks -= 1.2
-    } else if(powerClicks >= 50) {
-        powerClicks -= 1.1
-    } else if((powerClicks-= 1) < 0) {
-        powerClicks = 0
+    } else {
+        powerClicks--
     }
     powerUpdate()
 }, 150);
@@ -325,57 +333,15 @@ setInterval(() => {
     save.timePlayed++
 }, 1000);
 
-function giveAllAchievements(achGiveDelay) {
+function giveAllAchievements() {
     buttonClick()
-    save.clicks = 1
+    save.clicks = billion
+    save.clicksRaw = 10000
+    save.timePlayed = 14400
+    clickSpeed = 100
+    buttonClick()
     setTimeout(() => {
-        save.clicks *= 10
-        setTimeout(() => {
-            save.clicks *= 10
-            setTimeout(() => {
-                save.clicks *= 10
-                setTimeout(() => {
-                    save.clicks *= 10
-                    setTimeout(() => {
-                        save.clicks *= 10
-                        setTimeout(() => {
-                            save.clicks *= 10
-                            setTimeout(() => {
-                                save.clicks *= 10
-                                setTimeout(() => {
-                                    save.clicks *= 10
-                                    setTimeout(() => {
-                                        save.clicks *= 10
-                                        setTimeout(() => {
-                                            save.clicksRaw = 1000
-                                            setTimeout(() => {
-                                                save.clicksRaw = 5000
-                                                setTimeout(() => {
-                                                    save.clicksRaw = 10000
-                                                    setTimeout(() => {
-                                                        powerClicks = 100
-                                                        buttonClick()
-                                                        setTimeout(() => {
-                                                            save.timePlayed = 3600
-                                                            setTimeout(() => {
-                                                                save.timePlayed = 36000
-                                                                setTimeout(() => {
-                                                                    clickSpeed = 100
-                                                                    buttonClick()
-                                                                }, achGiveDelay);
-                                                            }, achGiveDelay);
-                                                        }, achGiveDelay);
-                                                    }, achGiveDelay);
-                                                }, achGiveDelay);
-                                            }, achGiveDelay);
-                                        }, achGiveDelay);
-                                    }, achGiveDelay);
-                                }, achGiveDelay);
-                            }, achGiveDelay);
-                        }, achGiveDelay);
-                    }, achGiveDelay);
-                }, achGiveDelay);
-            }, achGiveDelay);
-        }, achGiveDelay);
-    }, achGiveDelay);
+        powerClicks = 200
+        buttonClick()
+    }, 500);
 }
